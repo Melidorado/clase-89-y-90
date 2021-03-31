@@ -1,0 +1,19 @@
+.searchBar {
+    display: flex;
+    margin: 20px;
+    .searchBar__icon {
+        margin-right: 30px;
+        margin-top: 5px;
+        display: flex;
+        align-items: flex-end;
+        .search {
+            font-size: 50px;
+        }
+    }
+
+    .searchBar__input {
+        width: 869px;
+        border: none;
+        border-bottom: 2px solid #000;
+    }
+}
