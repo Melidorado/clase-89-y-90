@@ -1,0 +1,18 @@
+.filters_container {
+    width: 300px;
+    height: 346px;
+    margin: 21px;
+    overflow: scroll;
+    .filters_title {
+        opacity: .5;
+        font-size: 13px;
+        color: #22232b;
+    }
+    .accordion {
+        box-shadow: none;
+    }
+    .slider {
+        margin: 10px;
+    }
+}
+
