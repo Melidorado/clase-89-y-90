@@ -1,6 +1,7 @@
 import './Filters.scss';
 import React, { useState } from 'react';
 
+
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -18,9 +19,9 @@ function valuetext(value) {
     return `$${value}`;
   }
 
-const Filters = ({collectionFilter, colorFilter, categoryFilter}) => {
+const Filters = ({collectionFilter, colorFilter, categoryFilter, priceFilter, resetProductsArray}) => {
     
-        const [valueSlider, setValueSlider] = React.useState([90, 3000]);
+        const [ valueSlider , setValueSlider] = useState([90, 3000]);
         const [ valueCollection , setvalueCollection ] = useState("")
         const [ valueColor , setvalueColor ] = useState("")
         const [ valueCategory , setvalueCategory ] = useState("")
@@ -28,6 +29,7 @@ const Filters = ({collectionFilter, colorFilter, categoryFilter}) => {
       
         const handleChange = (event, newValue) => {
           setValueSlider(newValue);
+          priceFilter(newValue)
         };
 
         const handleChangeCollection = (e) => {
@@ -46,11 +48,9 @@ const Filters = ({collectionFilter, colorFilter, categoryFilter}) => {
         }
 
         const handleClick = () => {
-            filterOpen === false
-            ?setFilter(true)
-            :setFilter(false)
+            setFilter(!filterOpen)
+            filterOpen === false || resetProductsArray() 
         }
-
 
 
     return (
@@ -79,6 +79,7 @@ const Filters = ({collectionFilter, colorFilter, categoryFilter}) => {
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
+                onClick={handleClick}
                 >
                     <Typography className="">Color</Typography>
                 </AccordionSummary>
@@ -98,6 +99,7 @@ const Filters = ({collectionFilter, colorFilter, categoryFilter}) => {
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
+                onClick={handleClick}
                 >
                     <Typography className="">Category</Typography>
                 </AccordionSummary>
@@ -115,6 +117,7 @@ const Filters = ({collectionFilter, colorFilter, categoryFilter}) => {
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
+                onClick={handleClick}
                 >
                     <Typography className="">Price Range</Typography>
                 </AccordionSummary>

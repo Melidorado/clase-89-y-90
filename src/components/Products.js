@@ -25,12 +25,24 @@ const Products = ({products}) => {
           setArray(filterProducts)
     }
 
+    const priceFilter = (priceArray) => {
+        const filterProducts = products.filter( product => 
+            product.price >= priceArray[0] && product.price <= priceArray[1])
+        setArray(filterProducts)
+    }
+
+    const resetProductsArray = () => {
+        setArray(products)
+    }
+
     return (
         <div className="productContainer">
             <Filters 
             collectionFilter={collectionFilter}
             colorFilter={colorFilter}
             categoryFilter={categoryFilter}
+            priceFilter={priceFilter}
+            resetProductsArray={resetProductsArray}
             />
             {array.map( (product, i) => {
                 return (
