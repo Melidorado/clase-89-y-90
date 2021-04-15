@@ -5,35 +5,39 @@ import { useState } from 'react';
 
 const Products = ({products}) => {
 
-    const [array, setArray] = useState(products)
+    console.log(products)
+
+    const [productsFilter, setProductsFilter] = useState(products)
 
     const collectionFilter = (value) => {
         const filterProducts = products.filter(product => 
             product.collection === value)
-          setArray(filterProducts)
+            setProductsFilter(filterProducts)
     }
 
     const colorFilter = (value) => {
         const filterProducts = products.filter(product => 
             product.color === value)
-          setArray(filterProducts)
+            setProductsFilter(filterProducts)
     }
 
     const categoryFilter = (value) => {
         const filterProducts = products.filter(product => 
             product.category === value)
-          setArray(filterProducts)
+            setProductsFilter(filterProducts)
     }
 
     const priceFilter = (priceArray) => {
         const filterProducts = products.filter( product => 
             product.price >= priceArray[0] && product.price <= priceArray[1])
-        setArray(filterProducts)
+            setProductsFilter(filterProducts)
     }
 
     const resetProductsArray = () => {
-        setArray(products)
+        setProductsFilter(products)
     }
+
+    console.log(productsFilter)
 
     return (
         <div className="productContainer">
@@ -44,7 +48,7 @@ const Products = ({products}) => {
             priceFilter={priceFilter}
             resetProductsArray={resetProductsArray}
             />
-            {array.map( (product, i) => {
+            {productsFilter.map( (product, i) => {
                 return (
                 <Card 
                 key={`idTarjeta-${i}`} 

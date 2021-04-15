@@ -78,21 +78,23 @@ const products = [
 ];
 
 const App = () => { 
-  const [array, setArray] = useState(products)
+  const [productsApp, setProductsApp] = useState(products)
 
   const filterProductosInput = (valorDelInput) => {
     const filterProducts = products.filter(product => 
       product.title.toLowerCase().includes(valorDelInput) || 
       product.type.toLowerCase().includes(valorDelInput))
-    setArray(filterProducts)
+    setProductsApp(filterProducts)
   }
+
+  console.log("en APP", productsApp)
 
 
   return (
   <>
   <Nav />
   <SearchBar filterProductosInput={filterProductosInput}/>
-  <Products products={array}/>
+  <Products products={productsApp}/>
   </>
   )
 }
