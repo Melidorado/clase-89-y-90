@@ -87,14 +87,46 @@ const App = () => {
     setProductsApp(filterProducts)
   }
 
-  console.log("en APP", productsApp)
+  const collectionFilter = (value) => {
+    const filterProducts = products.filter(product => 
+        product.collection === value)
+        setProductsApp(filterProducts)
+  }
 
+  const colorFilter = (value) => {
+    const filterProducts = products.filter(product => 
+        product.color === value)
+      setProductsApp(filterProducts)
+  } 
+
+  const categoryFilter = (value) => {
+    const filterProducts = products.filter(product => 
+        product.category === value)
+        setProductsApp(filterProducts)
+  }
+
+  const priceFilter = (priceArray) => {
+    const filterProducts = products.filter( product => 
+        product.price >= priceArray[0] && product.price <= priceArray[1])
+        setProductsApp(filterProducts)
+  }
+
+  const resetProductsArray = () => {
+    setProductsApp(products)
+  }
 
   return (
   <>
   <Nav />
   <SearchBar filterProductosInput={filterProductosInput}/>
-  <Products products={productsApp}/>
+  <Products 
+  products={productsApp}
+  collectionFilter={collectionFilter}
+  colorFilter={colorFilter}
+  categoryFilter={categoryFilter}
+  priceFilter={priceFilter}
+  resetProductsArray={resetProductsArray}
+  />
   </>
   )
 }

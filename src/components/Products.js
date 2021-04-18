@@ -1,43 +1,8 @@
 import Card from './Card';
 import Filters from './Filters';
 import './Products.scss';
-import { useState } from 'react';
 
-const Products = ({products}) => {
-
-    console.log(products)
-
-    const [productsFilter, setProductsFilter] = useState(products)
-
-    const collectionFilter = (value) => {
-        const filterProducts = products.filter(product => 
-            product.collection === value)
-            setProductsFilter(filterProducts)
-    }
-
-    const colorFilter = (value) => {
-        const filterProducts = products.filter(product => 
-            product.color === value)
-            setProductsFilter(filterProducts)
-    }
-
-    const categoryFilter = (value) => {
-        const filterProducts = products.filter(product => 
-            product.category === value)
-            setProductsFilter(filterProducts)
-    }
-
-    const priceFilter = (priceArray) => {
-        const filterProducts = products.filter( product => 
-            product.price >= priceArray[0] && product.price <= priceArray[1])
-            setProductsFilter(filterProducts)
-    }
-
-    const resetProductsArray = () => {
-        setProductsFilter(products)
-    }
-
-    console.log(productsFilter)
+const Products = ({products, collectionFilter, colorFilter, categoryFilter, priceFilter, resetProductsArray}) => {
 
     return (
         <div className="productContainer">
@@ -48,7 +13,7 @@ const Products = ({products}) => {
             priceFilter={priceFilter}
             resetProductsArray={resetProductsArray}
             />
-            {productsFilter.map( (product, i) => {
+            {products.map( (product, i) => {
                 return (
                 <Card 
                 key={`idTarjeta-${i}`} 
